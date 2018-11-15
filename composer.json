@@ -1,0 +1,13 @@
+{
+    "name": "samyapp/cloudways-restart-php-deployer-task",
+    "description": "A simple deployer task and helper function to use cloudways api to restart php 7.1 fpm on one a server managed there.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam Yapp",
+            "email": "sam@samyapp.com"
+        }
+    ],
+    "require": {}
+}
