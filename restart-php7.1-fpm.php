@@ -1,6 +1,11 @@
 <?php
 
 namespace samyapp;
+
+use function Deployer\get;
+use function Deployer\desc;
+use function Deployer\task;
+
 /**
  * Gets an oauth access token from Cloudways
  * Requires a valid cloudways account email and api key
@@ -61,7 +66,7 @@ function cloudways_restartphp($server, $token) {
 	return false;
 }
 
-description('Restart php 7.1 fpm on cloudways server');
+desc('Restart php 7.1 fpm on cloudways server');
 task('deploy:restart-php7.1-fpm', function() {
 	$token = cloudways_oauth(get('cloudways_email'), get('cloudways_api_key'));
 	if($token) {
@@ -76,11 +81,14 @@ task('deploy:restart-php7.1-fpm', function() {
 
 /* Example Usage
 
+// require this file in your deploy.php after requiring your recipe,
+// set the needed variables and schedule the task.
+
 set('cloudways_email', 'you@cloudways-account-email.com'); 
 set('cloudways_server_id', 42); // the id of the cloudways server to restart
 // your cloudways api key - you could hard code this in your deploy script of
 // just set it in your environment instead.
-set('cloudways_api_key', $_ENV['CLOUDWAYS_API_KEY); 
+set('cloudways_api_key', $_ENV['CLOUDWAYS_API_KEY']);
 after('deploy:symlink', 'deploy:restart-php7.1-fpm');
 
 */
