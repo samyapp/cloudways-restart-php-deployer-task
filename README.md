@@ -12,7 +12,7 @@ You need a [Cloudways](https://www.cloudways.com) account and server, an api key
 
 It's just a couple of utility functions and a deployer task. Either download and include [restart-php7.1-fpm.php](restart-php7.1-fpm.php) or install via composer:
 
-`composer require --dev samyapp/cloudways-restart-php-deployer-task:dev-master`
+`composer require --dev samyapp/cloudways-restart-php-deployer-task`
 
 ## Usage
 
