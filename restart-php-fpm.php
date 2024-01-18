@@ -14,7 +14,7 @@ function cloudways_oauth($email, $api_key)
 {
 	$url = 'https://api.cloudways.com/api/v1/oauth/access_token';
 	$data = [
-		'email' => $email, get('cloudways_email'),
+		'email' => $email,
 		'api_key' => $api_key,
 	];
 
