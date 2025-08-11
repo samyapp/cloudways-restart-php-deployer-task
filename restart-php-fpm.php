@@ -14,7 +14,7 @@ function cloudways_oauth($email, $api_key)
 {
 	$url = 'https://api.cloudways.com/api/v1/oauth/access_token';
 	$data = [
-		'email' => $email, get('cloudways_email'),
+		'email' => $email,
 		'api_key' => $api_key,
 	];
 
@@ -45,7 +45,7 @@ function cloudways_restartphp($server, $token) {
 	$url = 'https://api.cloudways.com/api/v1/service/state';
 	$data = [
 		'server_id' => $server,
-		'service' => 'php7.1-fpm',
+        'service' => 'php' . get('cloudways_php_version') . '-fpm',
 		'state' => 'restart',
 	];
 
@@ -66,8 +66,8 @@ function cloudways_restartphp($server, $token) {
 	return false;
 }
 
-desc('Restart php 7.1 fpm on cloudways server');
-task('deploy:restart-php7.1-fpm', function() {
+desc('Restart php ' . get('cloudways_php_version') . ' fpm on cloudways server');
+task('deploy:restart-php-fpm', function() {
 	$token = cloudways_oauth(get('cloudways_email'), get('cloudways_api_key'));
 	if($token) {
 		if(!cloudways_restartphp(get('cloudways_server_id'), $token)) {
@@ -89,6 +89,6 @@ set('cloudways_server_id', 42); // the id of the cloudways server to restart
 // your cloudways api key - you could hard code this in your deploy script of
 // just set it in your environment instead.
 set('cloudways_api_key', $_ENV['CLOUDWAYS_API_KEY']);
-after('deploy:symlink', 'deploy:restart-php7.1-fpm');
+after('deploy:symlink', 'deploy:restart-php-fpm');
 
 */
