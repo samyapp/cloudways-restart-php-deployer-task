@@ -1,3 +1,5 @@
+# Archived, I no longer use this (and haven't for a while).
+
 # Restarting php-fpm on Cloudways servers from a [Deployer](https://deployer,org) file.
 
 A quick and dirty deployer task to restart php-fpm hosted on cloudways
